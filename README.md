@@ -29,6 +29,33 @@ Buddy AI is an AI-powered chatbot built using Python and Streamlit. It helps use
 - FAISS
 - NumPy
 
+## 🏗️ System Architecture
+
+```mermaid
+flowchart TD
+    A[User] --> B[Streamlit Interface]
+    B --> C[Chatbot Backend]
+
+    C --> D[Gemini AI]
+    C --> E[Groq Backup]
+    C --> F[Web Search]
+    C --> G[Calculator]
+    C --> H[PDF Assistant - RAG]
+
+    H --> I[PDF Text Extraction]
+    I --> J[Text Chunking]
+    J --> K[Sentence Transformers]
+    K --> L[FAISS Vector Search]
+    L --> M[Relevant Context]
+    M --> D
+
+    D --> N[Response to User]
+    E --> N
+    F --> N
+    G --> N
+    M --> N
+```
+
 ## 🧠 How It Works
 
 1. User enters a question through the Streamlit interface.
