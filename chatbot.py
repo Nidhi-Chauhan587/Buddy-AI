@@ -7,11 +7,23 @@ from groq import Groq
 from search import search_web
 from math_tool import calculate
 
-# Load API keys from .env
+
 load_dotenv()
 
-GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")
-GROQ_API_KEY = os.getenv("GROQ_API_KEY")
+import streamlit as st
+
+try:
+    GEMINI_API_KEY = st.secrets.get(
+        "GEMINI_API_KEY",
+        os.getenv("GEMINI_API_KEY")
+    )
+    GROQ_API_KEY = st.secrets.get(
+        "GROQ_API_KEY",
+        os.getenv("GROQ_API_KEY")
+    )
+except Exception:
+    GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")
+    GROQ_API_KEY = os.getenv("GROQ_API_KEY")
 
 
 # Connect to Gemini
